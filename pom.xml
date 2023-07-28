@@ -18,6 +18,9 @@
 
     <properties>
         <java.version>17</java.version>
+        <docker.repository.host>nexus-rm</docker.repository.host>
+        <docker.repository.port>30500</docker.repository.port>
+        <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -54,6 +57,19 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <!--Maven support for Docker integration. We configure the image to be part of the specified Docker repository,
+                specify the image tag based on the build version and also add the new build as 'latest'.-->
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${dockerfile-maven-plugin.version}</version>
+                <configuration>
+                    <tag>${project.version}</tag>
+                    <repository>${docker.repository.host}:${docker.repository.port}/repository/docker-stable/nautica
+                    </repository>
                 </configuration>
             </plugin>
         </plugins>
