@@ -1,3 +1,12 @@
+FROM openjdk:17 as builder
+EXPOSE 8080
+
+WORKDIR application
+COPY target/*.jar target/
+
+RUN java -Djarmode=layertools -jar target/*.jar extract --destination unpacked-with-layers
+
+
 FROM amazoncorretto:17
 
 EXPOSE 8080 5005
@@ -16,12 +25,9 @@ ENV JAVA_OPTS "-verbose:gc \
              -XX:CompressedClassSpaceSize=50m \
              -XX:-TieredCompilation"
 
-ENV SERVICE "java \
-              \${JAVA_OPTS} \
-              \${JAVA_EXTRA_OPTS} \
-              -jar \
-              /opt/service.jar"
+COPY --from=builder application/unpacked-with-layers/application/ ./
+COPY --from=builder application/unpacked-with-layers/dependencies/ ./
+COPY --from=builder application/unpacked-with-layers/spring-boot-loader/ ./
+COPY --from=builder application/unpacked-with-layers/snapshot-dependencies/ ./
 
-ADD target/*.jar.original /opt/service.jar
-
-ENTRYPOINT ["java","${JAVA_OPTS}","${JAVA_EXTRA_OPTS}","-jar", "/opt/service.jar"]
+ENTRYPOINT java ${JAVA_OPTS} ${JAVA_EXTRA_OPTS} org.springframework.boot.loader.JarLauncher
