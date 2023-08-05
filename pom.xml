@@ -74,7 +74,7 @@
                 <version>${dockerfile-maven-plugin.version}</version>
                 <configuration>
                     <tag>${project.version}</tag>
-                    <repository>${docker.repository.release}/repository/docker/${project.name}</repository>
+                    <repository>${docker.repository.snapshot}/repository/docker/${project.name}</repository>
                 </configuration>
             </plugin>
 
@@ -90,7 +90,7 @@
 
                     <uploadRepoStable>
                         <name>release-repo</name>
-                        <url>http://${docker.repository.release}/repository/helm/dan-shop</url>
+                        <url>http://${docker.repository.release}/repository/helm/${project.name}</url>
                         <type>NEXUS</type>
                         <!-- TODO: Replace with secrets -->
                         <username>jenkins</username>
@@ -98,7 +98,7 @@
                     </uploadRepoStable>
                     <uploadRepoSnapshot>
                         <name>snapshot-repo</name>
-                        <url>http://${docker.repository.snapshot}/repository/helm/dan-shop</url>
+                        <url>http://${docker.repository.snapshot}/repository/helm/${project.name}</url>
                         <type>NEXUS</type>
                         <!-- TODO: Replace with secrets -->
                         <username>jenkins</username>
