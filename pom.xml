@@ -94,7 +94,7 @@
 
                     <uploadRepoStable>
                         <name>release-repo</name>
-                        <url>${helm.repository.release}/helm/${project.name}</url>
+                        <url>${helm.repository.release}</url>
                         <type>NEXUS</type>
                         <!-- TODO: Replace with secrets -->
                         <username>jenkins</username>
@@ -102,7 +102,7 @@
                     </uploadRepoStable>
                     <uploadRepoSnapshot>
                         <name>snapshot-repo</name>
-                        <url>${helm.repository.snapshot}/helm/${project.name}</url>
+                        <url>${helm.repository.snapshot}</url>
                         <type>NEXUS</type>
                         <!-- TODO: Replace with secrets -->
                         <username>jenkins</username>
