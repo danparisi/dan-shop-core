@@ -14,12 +14,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>dan-shop-core-service</name>
 
-
     <properties>
         <java.version>17</java.version>
         <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
-        <docker.repository.release>minikube.nexus-docker-dan-release-http:30500</docker.repository.release>
-        <docker.repository.snapshot>minikube.nexus-docker-dan-snapshot-http:30501</docker.repository.snapshot>
+        <helm.repository.release>minikube.nexus-dan-helm-release-http:30600</helm.repository.release>
+        <helm.repository.snapshot>minikube.nexus-dan-helm-snapshot-http:30601</helm.repository.snapshot>
+        <docker.repository.release>minikube.nexus-dan-docker-release-http:30500</docker.repository.release>
+        <docker.repository.snapshot>minikube.nexus-dan-docker-snapshot-http:30501</docker.repository.snapshot>
     </properties>
 
     <dependencies>
@@ -83,6 +84,9 @@
                 <artifactId>helm-maven-plugin</artifactId>
                 <version>6.9.0</version>
                 <configuration>
+                    <!-- Allow HTTP registry -->
+                    <insecure>true</insecure>
+                    <skipPushLogin>true</skipPushLogin>
                     <chartVersion>${project.version}</chartVersion>
                     <chartDirectory>${project.basedir}/${project.name}</chartDirectory>
                     <autoDetectLocalHelmBinary>false</autoDetectLocalHelmBinary>
@@ -90,7 +94,7 @@
 
                     <uploadRepoStable>
                         <name>release-repo</name>
-                        <url>http://${docker.repository.release}/repository/helm/${project.name}</url>
+                        <url>${helm.repository.release}/helm/${project.name}</url>
                         <type>NEXUS</type>
                         <!-- TODO: Replace with secrets -->
                         <username>jenkins</username>
@@ -98,7 +102,7 @@
                     </uploadRepoStable>
                     <uploadRepoSnapshot>
                         <name>snapshot-repo</name>
-                        <url>http://${docker.repository.snapshot}/repository/helm/${project.name}</url>
+                        <url>${helm.repository.snapshot}/helm/${project.name}</url>
                         <type>NEXUS</type>
                         <!-- TODO: Replace with secrets -->
                         <username>jenkins</username>
