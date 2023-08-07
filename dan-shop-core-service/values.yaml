@@ -8,7 +8,8 @@ replicaCount: 1
 nameOverride: ""
 fullnameOverride: ""
 imagePullSecrets:
-  - name: nexus-docker-pull-secret
+  - name: nexus-release-http-secret
+  - name: nexus-snapshot-http-secret
 
 serviceAccount:
   # Specifies whether a service account should be created
