@@ -39,12 +39,14 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /health/ping
               port: 8080
+              host: localhost
+              path: /health/ping
           readinessProbe:
             httpGet:
-              path: /health
               port: 8080
+              host: localhost
+              path: /health
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
