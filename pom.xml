@@ -91,6 +91,7 @@
                     <!-- Allow HTTP registry -->
                     <insecure>true</insecure>
                     <skipPushLogin>true</skipPushLogin>
+                    <releaseName>${project.name}</releaseName>
                     <chartVersion>${project.version}</chartVersion>
                     <chartDirectory>${project.basedir}/${project.name}</chartDirectory>
                     <autoDetectLocalHelmBinary>false</autoDetectLocalHelmBinary>
