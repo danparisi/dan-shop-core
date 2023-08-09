@@ -11,6 +11,13 @@ imagePullSecrets:
   - name: nexus-release-http-secret
   - name: nexus-snapshot-http-secret
 
+initContainers:
+  - name: check-nexus-ready
+    image: alpine:latest
+    command: [ 'sh', '-c',
+      'until wget --timeout=2 --tries=1 -q nexus-rm:8081;  
+      do echo "Waiting for Nexus to be ready"; sleep 2; done; echo "Nexus is ready!";' ]
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
