@@ -101,10 +101,10 @@
                     <insecure>true</insecure>
                     <skipUpgrade>false</skipUpgrade>
                     <skipPushLogin>true</skipPushLogin>
-                    <upgradeWithInstall>true</upgradeWithInstall>
                     <releaseName>${project.name}</releaseName>
-                    <upgradeWithInstall>true</upgradeWithInstall>
                     <chartVersion>${project.version}</chartVersion>
+                    <upgradeWithInstall>true</upgradeWithInstall>
+                    <repositoryAddForceUpdate>true</repositoryAddForceUpdate>
                     <chartDirectory>${project.basedir}/${project.name}</chartDirectory>
                     <autoDetectLocalHelmBinary>false</autoDetectLocalHelmBinary>
                     <helmDownloadUrl>https://get.helm.sh/helm-v3.12.2-linux-amd64.tar.gz</helmDownloadUrl>
