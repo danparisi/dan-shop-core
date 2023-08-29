@@ -23,6 +23,8 @@ public class OrdersController {
 
     @GetMapping
     public Set<UUID> getAll() {
+        log.info("Returning all orders");
+
         return ORDERS;
     }
 
