@@ -94,8 +94,10 @@
                 <configuration>
                     <!-- Allow HTTP registry -->
                     <insecure>true</insecure>
+                    <skipUpgrade>false</skipUpgrade>
                     <skipPushLogin>true</skipPushLogin>
                     <releaseName>${project.name}</releaseName>
+                    <upgradeWithInstall>true</upgradeWithInstall>
                     <chartVersion>${project.version}</chartVersion>
                     <chartDirectory>${project.basedir}/${project.name}</chartDirectory>
                     <autoDetectLocalHelmBinary>false</autoDetectLocalHelmBinary>
