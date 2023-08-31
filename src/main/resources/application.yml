@@ -4,7 +4,7 @@ spring:
   application:
     name: dan-shop-core-service
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: dan-kafka-cluster-kafka-bootstrap:9092
     consumer:
       group-id: ${spring.application.name}
 
