@@ -13,11 +13,11 @@ spec:
       {{- include "dan-shop.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
-        rollme: { { randAlphaNum 5 | quote } }
-      {{- end }}
+        {{- with .Values.podAnnotations }}
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
+          rollme: {{ randAlphaNum 5 | quote }}
       labels:
         {{- include "dan-shop.selectorLabels" . | nindent 8 }}
     spec:
