@@ -4,12 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ExecutionException;
-
-import static java.time.Instant.now;
 
 @Slf4j
 @Component
@@ -23,10 +20,10 @@ class KafkaSenderService {
         log.info("Kafka result: " + resul);
     }
 
-    @Scheduled(fixedDelayString = "PT10S", initialDelay = 0)
-    public void test() throws ExecutionException, InterruptedException {
-        log.info("Sending message to kafka");
-        sendMessage(now() + ": kafka test", "dan-service-logs");
-    }
+//    @Scheduled(fixedDelayString = "PT10S", initialDelay = 0)
+//    public void test() throws ExecutionException, InterruptedException {
+//        log.info("Sending message to kafka");
+//        sendMessage(now() + ": kafka test", "dan-service-logs");
+//    }
 
 }

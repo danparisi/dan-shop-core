@@ -1,5 +1,11 @@
 debug: true
 
+dan:
+  kafka:
+    producer:
+      topics:
+        logs: dan-service-logs
+
 spring:
   application:
     name: dan-shop-core-service
