@@ -1,5 +1,13 @@
 debug: true
 
+spring:
+  application:
+    name: dan-shop-core-service
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: ${spring.application.name}
+
 management:
   endpoint:
     health:
