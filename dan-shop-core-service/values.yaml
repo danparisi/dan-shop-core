@@ -2,7 +2,7 @@ image:
   pullPolicy: Always
   repository: minikube.nexus-dan-docker-snapshot-http:30501/repository/docker/dan-shop-core-service
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.1-SNAPSHOT"
+  tag: "0.0.2-SNAPSHOT"
 
 replicaCount: 1
 nameOverride: ""
