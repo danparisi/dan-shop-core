@@ -1,9 +1,14 @@
+# @formatter:off
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "dan-shop.fullname" . }}
   labels:
     {{- include "dan-shop.labels" . | nindent 4 }}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -13,3 +18,4 @@ spec:
       name: http
   selector:
     {{- include "dan-shop.selectorLabels" . | nindent 4 }}
+# @formatter:on

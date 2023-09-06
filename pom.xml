@@ -44,22 +44,19 @@
             <artifactId>spring-kafka</artifactId>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>ch.qos.logback.contrib</groupId>-->
-        <!--            <artifactId>logback-json-classic</artifactId>-->
-        <!--            <version>${log-back.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>ch.qos.logback.contrib</groupId>-->
-        <!--            <artifactId>logback-jackson</artifactId>-->
-        <!--            <version>${log-back.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>ch.qos.logback</groupId>-->
-        <!--            <artifactId>logback-classic</artifactId>-->
-        <!--            <version>${log-back.version}</version>-->
-        <!--            <scope>runtime</scope>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing-bridge-brave</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.zipkin.reporter2</groupId>
+            <artifactId>zipkin-reporter-brave</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
