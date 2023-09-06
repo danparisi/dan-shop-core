@@ -7,16 +7,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
-    private final LoggingInterceptorAdapter loggingInterceptorAdapter;
-
-    public WebMvcConfiguration(LoggingInterceptorAdapter loggingInterceptorAdapter) {
-        this.loggingInterceptorAdapter = loggingInterceptorAdapter;
-    }
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry
-                .addInterceptor(loggingInterceptorAdapter)
-                .addPathPatterns("/*");
+                .addInterceptor(new LoggingInterceptorAdapter())
+                .addPathPatterns("/**");
     }
 }

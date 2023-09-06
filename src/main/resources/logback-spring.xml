@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    <!--    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">-->
-    <!--        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">-->
-    <!--            <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter"/>-->
-    <!--            <timestampFormat>yyyy-MM-dd HH:mm:ss.SSS</timestampFormat>-->
-    <!--            <appendLineSeparator>true</appendLineSeparator>-->
-    <!--        </layout>-->
-    <!--    </appender>-->
-    <!--    <root level="info">-->
-    <!--        <appender-ref ref="CONSOLE"/>-->
-    <!--    </root>-->
 
     <springProperty name="logs-topic" source="dan.kafka.producer.topics.logs"/>
     <springProperty name="bootstrap-servers" source="spring.kafka.bootstrap-servers"/>
@@ -33,20 +23,6 @@
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
             <layout class="net.logstash.logback.layout.LogstashLayout"/>
         </encoder>
-        <!--        <encoder class="com.github.danielwegener.logback.kafka.encoding.PatternLayoutKafkaMessageEncoder">-->
-        <!--            &lt;!&ndash;            <layout class="net.logstash.logback.layout.LogstashLayout"/>&ndash;&gt;-->
-        <!--            <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">-->
-        <!--                <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter"/>-->
-        <!--                <timestampFormat>yyyy-MM-dd HH:mm:ss.SSS</timestampFormat>-->
-        <!--                <appendLineSeparator>true</appendLineSeparator>-->
-        <!--            </layout>-->
-        <!--        </encoder>-->
-
-        <!--        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">-->
-        <!--            <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter"/>-->
-        <!--            <timestampFormat>yyyy-MM-dd HH:mm:ss.SSS</timestampFormat>-->
-        <!--            <appendLineSeparator>true</appendLineSeparator>-->
-        <!--        </layout>-->
 
         <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy"/>
         <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy"/>
