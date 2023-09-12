@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import static com.danshop.core.api.v1.OrdersController.BASE_ENDPOINT_ORDERS;
+import static java.util.Collections.synchronizedSet;
 import static java.util.UUID.randomUUID;
 
 @Slf4j
@@ -19,7 +20,7 @@ import static java.util.UUID.randomUUID;
 public class OrdersController {
     static final String BASE_ENDPOINT_ORDERS = "/v1/orders";
 
-    private static final Set<UUID> ORDERS = new HashSet<>();
+    private final Set<UUID> ORDERS = synchronizedSet(new HashSet<>());
 
     @GetMapping
     public Set<UUID> getAll() {
@@ -37,7 +38,7 @@ public class OrdersController {
         return orderId;
     }
 
-    private static UUID addOrder() {
+    private UUID addOrder() {
         var orderId = randomUUID();
 
         ORDERS.add(orderId);
